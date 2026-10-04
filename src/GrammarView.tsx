@@ -1,0 +1,6 @@
+import type {ContextTranslation,GrammarToken} from './types';
+
+export function tokenHint(token:GrammarToken){return [token.label,token.role,token.verb_form,token.irregular?'Неправильный глагол':'',token.forms?.join(' → '),`Лемма: ${token.lemma}`].filter(Boolean).join(' · ');}
+export function GrammarView({analysis,onSelect}:{analysis:ContextTranslation;onSelect?:(text:string)=>void}){
+ return <>{analysis.situation&&<div className="situation-panel"><h3>Ситуация и употребление</h3><p>{analysis.situation}</p></div>}{Boolean(analysis.tokens?.length)&&<div className="syntax-panel"><h3>Разбор реплики</h3><div className="syntax-tokens">{analysis.tokens?.map((token,i)=><button key={i} className={'syntax-token pos-'+token.pos.toLowerCase()} title={tokenHint(token)} onClick={()=>onSelect?.(token.text)}><strong>{token.text}</strong><span>{token.verb_form||token.label}{token.irregular?' · IRR':''}</span>{token.role&&<small>{token.role}</small>}</button>)}</div><div className="syntax-legend"><span>V1 — базовая</span><span>V2 — прошедшее</span><span>V3 — причастие</span><span>IRR — неправильный</span></div><small>{analysis.grammar_source} · проверьте разбор на необычной реплике</small></div>}</>;
+}

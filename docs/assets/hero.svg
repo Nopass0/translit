@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" role="img" aria-label="Translit — play, read, remember">
+ <defs>
+  <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0e1916"/><stop offset="1" stop-color="#17372a"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#93e7cf" stop-opacity=".12"/><stop offset="1" stop-color="#93e7cf" stop-opacity="0"/></radialGradient>
+ </defs>
+ <rect width="1280" height="440" rx="24" fill="url(#bg)"/>
+ <circle cx="992" cy="235" r="330" fill="url(#glow)"/>
+ <g fill="none" stroke="#93e7cf" opacity=".08"><path d="M0 344h1280M0 376h1280M0 408h1280M744 0v440M792 0v440M840 0v440M888 0v440M936 0v440M984 0v440M1032 0v440M1080 0v440M1128 0v440M1176 0v440M1224 0v440"/></g>
+ <g transform="translate(76 64)">
+  <rect width="56" height="56" rx="16" fill="#93e7cf" transform="rotate(-6 28 28)"/>
+  <g stroke="#183b2d" stroke-width="2.4" fill="none"><path d="M16 16h8q4 0 4 4v25q-3-4-12-3zM28 20q0-4 4-4h8v26q-9-1-12 3z"/></g>
+  <text x="76" y="40" fill="#e9eee0" font-family="Segoe UI,Arial,sans-serif" font-size="40" font-weight="700" letter-spacing="-2">translit<tspan fill="#d9c98f">.</tspan></text>
+ </g>
+ <text x="78" y="160" fill="#93e7cf" font-family="Segoe UI,Arial,sans-serif" font-size="12" letter-spacing="4">PLAY. READ. REMEMBER.</text>
+ <text x="74" y="222" fill="#e9eee0" font-family="Georgia,serif" font-size="49">Understand the story.</text>
+ <text x="74" y="281" fill="#e9eee0" font-family="Georgia,serif" font-size="49">Remember the language.</text>
+ <text x="78" y="327" fill="#a5b9ac" font-family="Segoe UI,Arial,sans-serif" font-size="17">Game dialogue → context → your vocabulary.</text>
+ <g font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#a5d5bc">
+  <rect x="78" y="362" width="116" height="30" rx="8" fill="#20362b" stroke="#385744"/><text x="94" y="382">WINDOWS x64</text>
+  <rect x="204" y="362" width="112" height="30" rx="8" fill="#20362b" stroke="#385744"/><text x="220" y="382">OFFLINE FIRST</text>
+  <rect x="326" y="362" width="152" height="30" rx="8" fill="#20362b" stroke="#385744"/><text x="342" y="382">ENGLISH → RUSSIAN</text>
+ </g>
+ <g transform="translate(800 54)">
+  <rect x="10" y="12" width="396" height="332" rx="18" fill="#05100a" opacity=".4"/>
+  <rect width="396" height="332" rx="18" fill="#1d3227" stroke="#48604d"/>
+  <path d="M0 48h396" stroke="#48604d"/>
+  <text x="23" y="30" fill="#a6c8b2" font-family="Segoe UI,Arial,sans-serif" font-size="10" letter-spacing="2">CONTEXTUAL TRANSLATION</text>
+  <circle cx="363" cy="25" r="3" fill="#93e7cf"/>
+  <text x="24" y="90" fill="#a5c0af" font-family="Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="1">PHRASAL VERB</text>
+  <text x="23" y="136" fill="#e9eee0" font-family="Georgia,serif" font-size="34">butter me up</text>
+  <text x="24" y="171" fill="#a2e0b5" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="600">льстить · пытаться задобрить</text>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="11">
+   <rect x="24" y="196" width="93" height="28" rx="6" fill="#294154" stroke="#577a95"/><text x="39" y="214" fill="#a2d9f0">butter · VERB</text>
+   <rect x="125" y="196" width="106" height="28" rx="6" fill="#40343b" stroke="#7c6875"/><text x="140" y="214" fill="#e0b9d4">me · OBJECT</text>
+   <rect x="239" y="196" width="132" height="28" rx="6" fill="#293e32" stroke="#54765e"/><text x="254" y="214" fill="#b9e1c6">up · PARTICLE</text>
+  </g>
+  <text x="24" y="254" fill="#b8c9b9" font-family="Segoe UI,Arial,sans-serif" font-size="13">“Stop trying to butter me up.”</text>
+  <rect x="24" y="277" width="347" height="34" rx="8" fill="#93e7cf"/>
+  <text x="120" y="299" fill="#183b2d" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600">+ SAVE &amp; REMEMBER</text>
+ </g>
+</svg>

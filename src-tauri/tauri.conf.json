@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Translit",
+  "version": "0.2.0",
+  "identifier": "local.translit.game-dictionary",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Translit · игровой словарь",
+        "width": 1320,
+        "height": 880,
+        "minWidth": 980,
+        "minHeight": 700,
+        "decorations": false
+      },
+      {
+        "label": "overlay",
+        "url": "index.html?overlay=1",
+        "title": "Translit Overlay",
+        "width": 1280,
+        "height": 720,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "visible": false,
+        "resizable": false,
+        "shadow": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src ipc: http://ipc.localhost; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "resources": {
+      "resources/bin/translit_hook_v2.dll": "bin/translit_hook_v2.dll",
+      "resources/bin/translit_native.exe": "bin/translit_native.exe",
+      "resources/bin/translit_test_host.exe": "bin/translit_test_host.exe",
+      "../data/": "data/",
+      "resources/models/": "models/",
+      "resources/runtime/": "runtime/",
+      "resources/ocr/": "ocr/",
+      "resources/runtime/windows-x64/msvcp140.dll": "msvcp140.dll",
+      "resources/runtime/windows-x64/vcruntime140.dll": "vcruntime140.dll",
+      "resources/runtime/windows-x64/vcruntime140_1.dll": "vcruntime140_1.dll",
+      "../README.md": "README.md",
+      "../docs/": "docs/",
+      "../native/build/_deps/minhook-src/LICENSE.txt": "licenses/MinHook.txt"
+    },
+    "targets": [
+      "nsis"
+    ],
+    "publisher": "Translit",
+    "shortDescription": "Перевод и изучение английского в одиночных играх",
+    "windows": {
+      "webviewInstallMode": {
+        "type": "offlineInstaller"
+      },
+      "nsis": {
+        "startMenuFolder": "Translit",
+        "languages": [
+          "Russian",
+          "English"
+        ],
+        "installMode": "currentUser",
+        "displayLanguageSelector": true,
+        "compression": "zlib"
+      }
+    }
+  }
+}

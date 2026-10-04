@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.zip binary
+*.exe binary
+*.dll binary
+data/eng-rus.tei -whitespace
+data/FreeDict-COPYING.txt -whitespace conflict-marker-size=32

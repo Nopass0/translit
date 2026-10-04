@@ -1,0 +1,30 @@
+{
+  "name": "translit",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc && vite build",
+    "native": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-native.ps1",
+    "tauri": "tauri",
+    "start": "npm run native && tauri dev",
+    "release": "npm run native && npm run build && tauri build --no-bundle",
+    "check": "tsc --noEmit",
+    "installer": "npm run native && tauri build --bundles nsis"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}

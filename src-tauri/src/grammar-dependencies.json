@@ -1,0 +1,254 @@
+[
+  {
+    "url": "https://files.pythonhosted.org/packages/99/91/8acff4f5e50511b911bbccb72b8628a49c68ce14148cd9f6431094859a90/annotated_types-0.8.0-py3-none-any.whl",
+    "hash": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0",
+    "file": "annotated_types-0.8.0-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "annotated-types 0.8.0"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/20/07/fb43edc2ff0a6a367e4a94fc39eb3b85aa1e55e24cc857af2db145ce9f0d/blis-1.3.3-cp312-cp312-win_amd64.whl",
+    "hash": "f20f7ad69aaffd1ce14fe77de557b6df9b61e0c9e582f75a843715d836b5c8af",
+    "file": "blis-1.3.3-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "blis 1.3.3"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/9e/96/d32b941a501ab566a16358d68b6eb4e4acc373fab3c3c4d7d9e649f7b4bb/catalogue-2.0.10-py3-none-any.whl",
+    "hash": "58c2de0020aa90f4a2da7dfad161bf7b3b054c86a5f09fcedc0b2b740c109a9f",
+    "file": "catalogue-2.0.10-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "catalogue 2.0.10"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl",
+    "hash": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775",
+    "file": "certifi-2026.7.22-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "certifi 2026.7.22"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/eb/e6/e6e083884cbcfd49c64865af05027fe7011be7b2d9179524f099a1b611f3/charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl",
+    "hash": "780fbe7cab297b81dad9fb8dc5eb003c0468ffb0d9e5f65068c53a34661a96bc",
+    "file": "charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "charset-normalizer 3.5.2"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/7e/d4/7ebdbd03970677812aac39c869717059dbb71a4cfc033ca6e5221787892c/click-8.1.8-py3-none-any.whl",
+    "hash": "63c132bbbed01578a06712a2d1f497bb62d9c1c0d329b7903a866228027263b2",
+    "file": "click-8.1.8-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "click 8.1.8"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/97/aa/c333f1be2afab2d033d51a66cb105f4bfc885b0c546e1168fb889a416b9d/cloudpathlib-0.26.0-py3-none-any.whl",
+    "hash": "abcd7f54bcbb2fbb79c0e96b79241f08866760aee6276586882b3558672d571b",
+    "file": "cloudpathlib-0.26.0-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "cloudpathlib 0.26.0"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl",
+    "hash": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+    "file": "colorama-0.4.6-py2.py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "colorama 0.4.6"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/0c/00/3106b1854b45bd0474ced037dfe6b73b90fe68a68968cef47c23de3d43d2/confection-0.1.5-py3-none-any.whl",
+    "hash": "e29d3c3f8eac06b3f77eb9dfb4bf2fc6bcc9622a98ca00a698e3d019c6430b14",
+    "file": "confection-0.1.5-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "confection 0.1.5"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/dd/fe/3ee37d02ca4040f2fb22d34eb415198f955862b5dd47eee01df4c8f5454c/cymem-2.0.13-cp312-cp312-win_amd64.whl",
+    "hash": "2ff1c41fd59b789579fdace78aa587c5fc091991fa59458c382b116fc36e30dc",
+    "file": "cymem-2.0.13-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "cymem 2.0.13"
+  },
+  {
+    "url": "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl",
+    "hash": "1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85",
+    "file": "en_core_web_sm-3.8.0-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "en_core_web_sm 3.8.0"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+    "hash": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+    "file": "idna-3.20-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "idna 3.20"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+    "hash": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+    "file": "jinja2-3.1.6-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "Jinja2 3.1.6"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/3f/bf/62495e180b7000aaf30000fff849e933f74264638057176cf46852500adc/markupsafe-3.0.4-cp312-cp312-win_amd64.whl",
+    "hash": "11935df9bf455ed0c04eb87bcd720f02b1fe5e02128a9430f23aed6f93336fc7",
+    "file": "markupsafe-3.0.4-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "MarkupSafe 3.0.4"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/84/a4/b249b042f5afe34d14ada2dc4afc777e883c15863296756179652e081c44/murmurhash-1.0.15-cp312-cp312-win_amd64.whl",
+    "hash": "f4ac15a2089dc42e6eb0966622d42d2521590a12c92480aafecf34c085302cca",
+    "file": "murmurhash-1.0.15-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "murmurhash 1.0.15"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/36/fa/8c9210162ca1b88529ab76b41ba02d433fd54fecaf6feb70ef9f124683f1/numpy-2.2.6-cp312-cp312-win_amd64.whl",
+    "hash": "c1f9540be57940698ed329904db803cf7a402f3fc200bfe599334c9bd84a40b2",
+    "file": "numpy-2.2.6-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "numpy 2.2.6"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+    "hash": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+    "file": "packaging-26.3-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "packaging 26.3"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/a0/c9/c91ea56342e6c364fc69b444a1ac5432327857199c44032c9cc9dc4c3a23/preshed-3.0.13-cp312-cp312-win_amd64.whl",
+    "hash": "04d8f13f2986e5d11af5ac51f55ce3106c70c41b483d20ea392e6180bdd0f870",
+    "file": "preshed-3.0.13-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "preshed 3.0.13"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/eb/47/c95ffc2009878c7aac0c5e08528022dcb885933252a88b5f170058014464/pydantic-2.13.5-py3-none-any.whl",
+    "hash": "346a034f080da3755d8e9cb5e00e8b07de1d39e4f6e2c87d8ab7cafa0b269a73",
+    "file": "pydantic-2.13.5-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "pydantic 2.13.5"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/cf/c9/4c19f41b84cf6b622a72fbeed7665b25d47a187d68d47d0d430c07f23268/pydantic_core-2.46.5-cp312-cp312-win_amd64.whl",
+    "hash": "5e81740c09e310f5aa5cbd3e434a01c154d4bef93241c7877b39f211d2b78ba8",
+    "file": "pydantic_core-2.46.5-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "pydantic_core 2.46.5"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/a0/f4/c67b0b3f1b9245e8d266f0f112c500d50e5b4e83cb6f3b71b6528104182a/requests-2.34.2-py3-none-any.whl",
+    "hash": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0",
+    "file": "requests-2.34.2-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "requests 2.34.2"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/a3/dc/17031897dae0efacfea57dfd3a82fdd2a2aeb58e0ff71b77b87e44edc772/setuptools-80.9.0-py3-none-any.whl",
+    "hash": "062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922",
+    "file": "setuptools-80.9.0-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "setuptools 80.9.0"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/8a/c5/14732c140fa0af0e59345949eaf9016c75ad3f076586f2413e3d3566a8da/smart_open-7.7.1-py3-none-any.whl",
+    "hash": "cb62dc45f519bf39b612564d326d2a17556f3a6056e3c3a86a07215d670d45bc",
+    "file": "smart_open-7.7.1-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "smart_open 7.7.1"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/7d/48/7e9581b476df76aaf9ee182888d15322e77c38b0bbbd5e80160ba0bddd4c/spacy-3.8.11-cp312-cp312-win_amd64.whl",
+    "hash": "88d65941a87f58d75afca1785bd64d01183a92f7269dcbcf28bd9d6f6a77d1a7",
+    "file": "spacy-3.8.11-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "spacy 3.8.11"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/c3/55/12e842c70ff8828e34e543a2c7176dac4da006ca6901c9e8b43efab8bc6b/spacy_legacy-3.0.12-py2.py3-none-any.whl",
+    "hash": "476e3bd0d05f8c339ed60f40986c07387c0a71479245d6d0f4298dbd52cda55f",
+    "file": "spacy_legacy-3.0.12-py2.py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "spacy-legacy 3.0.12"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/33/78/d1a1a026ef3af911159398c939b1509d5c36fe524c7b644f34a5146c4e16/spacy_loggers-1.0.5-py3-none-any.whl",
+    "hash": "196284c9c446cc0cdb944005384270d775fdeaf4f494d8e269466cfa497ef645",
+    "file": "spacy_loggers-1.0.5-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "spacy-loggers 1.0.5"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/84/37/9889cfdc570ee7686f0b039be3b798fc2c05cbc0b9c3ad25e19a6d843861/srsly-2.5.4-cp312-cp312-win_amd64.whl",
+    "hash": "a287627f6d35f83b8e8df99b4c7f7068b3cf386d4c28fc4b257b226512568f91",
+    "file": "srsly-2.5.4-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "srsly 2.5.4"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/60/40/d35297c3688368772e3a3bbfc854a0acea29ccbe757cdaf1fbc234588c5e/thinc-8.3.11-cp312-cp312-win_amd64.whl",
+    "hash": "0d0775b22ac345342d33cdbdf5a69c032c8560065545ff3ad3f19c79300f7cd7",
+    "file": "thinc-8.3.11-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "thinc 8.3.11"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/a7/03/921a3d3c75785aca9ebfbfcabfbc3a1be12e2ab5265deb026d55a5a3f83e/tqdm-4.70.1-py3-none-any.whl",
+    "hash": "c293e525e6fef9c20e8728fd4612df02a0aa31bb5fe91ecd93e123b1b7bffa73",
+    "file": "tqdm-4.70.1-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "tqdm 4.70.1"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/5e/dd/5cbf31f402f1cc0ab087c94d4669cfa55bd1e818688b910631e131d74e75/typer_slim-0.20.0-py3-none-any.whl",
+    "hash": "f42a9b7571a12b97dddf364745d29f12221865acef7a2680065f9bb29c7dc89d",
+    "file": "typer_slim-0.20.0-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "typer-slim 0.20.0"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+    "hash": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+    "file": "typing_extensions-4.16.0-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "typing_extensions 4.16.0"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl",
+    "hash": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147",
+    "file": "typing_inspection-0.4.4-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "typing-inspection 0.4.4"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl",
+    "hash": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3",
+    "file": "urllib3-2.8.0-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "urllib3 2.8.0"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/06/7c/34330a89da55610daa5f245ddce5aab81244321101614751e7537f125133/wasabi-1.1.3-py3-none-any.whl",
+    "hash": "f76e16e8f7e79f8c4c8be49b4024ac725713ab10cd7f19350ad18a8e3f71728c",
+    "file": "wasabi-1.1.3-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "wasabi 1.1.3"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/a4/74/a148b41572656904a39dfcfed3f84dd1066014eed94e209223ae8e9d088d/weasel-0.4.3-py3-none-any.whl",
+    "hash": "08f65b5d0dbded4879e08a64882de9b9514753d9eaa4c4e2a576e33666ac12cf",
+    "file": "weasel-0.4.3-py3-none-any.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "weasel 0.4.3"
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/96/9f/9e56db2a3492275be809082c6f63a7a063f52b3e1812aae1eb03ec33f64c/wrapt-2.5.0-cp312-cp312-win_amd64.whl",
+    "hash": "ab45839c912777e2738fed369636589c8b2a6d9c44ca56de0fd0814581d467c2",
+    "file": "wrapt-2.5.0-cp312-cp312-win_amd64.whl",
+    "destination": "engine/Lib/site-packages",
+    "label": "wrapt 2.5.0"
+  }
+]

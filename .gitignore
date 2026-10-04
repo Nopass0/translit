@@ -1,0 +1,13 @@
+node_modules/
+dist/
+native/build/
+src-tauri/target/
+src-tauri/resources/bin/
+artifacts/
+.tools/
+src-tauri/resources/models/
+src-tauri/resources/runtime/
+/src-tauri/resources/ocr/
+/.cache/
+scripts/qa-desktop-safe.py
+src-tauri/gen/
