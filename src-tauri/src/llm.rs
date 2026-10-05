@@ -28,6 +28,12 @@ pub struct Model {
     pub url: String,
     pub hash: String,
     pub source: String,
+    #[serde(default = "default_context_size")]
+    pub context_size: u32,
+}
+/// Uses llama.cpp's established context size for existing catalog entries.
+fn default_context_size() -> u32 {
+    4096
 }
 /// Returns pinned model metadata; catalog updates never silently replace installed weights.
 pub fn catalog() -> Vec<Model> {
@@ -211,6 +217,11 @@ impl Llm {
         if settings.device == "vulkan" {
             command.args(["--device", "Vulkan0"]);
         }
+        let context_size = catalog()
+            .iter()
+            .find(|model| model.id == settings.mini_model)
+            .map(|model| model.context_size)
+            .unwrap_or(4096);
         let mut child = command
             .arg("--model")
             .arg(self.root.join(&settings.mini_model).join("model.gguf"))
@@ -220,7 +231,7 @@ impl Llm {
                 "--port",
                 &port.to_string(),
                 "--ctx-size",
-                "4096",
+                &context_size.to_string(),
                 "--parallel",
                 "1",
                 "--threads",

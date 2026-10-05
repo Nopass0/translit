@@ -1,6 +1,6 @@
 //! Serialized attachment, frame acquisition, OCR, pause, and automatic recovery.
 use crate::llm::{self, Llm};
-use crate::{context, dictionary::Dictionary, mini::Mini, models::*, native};
+use crate::{context, decision::Decision, dictionary::Dictionary, mini::Mini, models::*, native};
 use base64::{engine::general_purpose::STANDARD, Engine};
 use std::{
     collections::HashMap,
@@ -36,6 +36,7 @@ pub struct Runtime {
     pub dictionary: Arc<Dictionary>,
     pub mini: Mini,
     pub llm: Llm,
+    pub decision: Decision,
     pub translation_cache: Arc<Mutex<HashMap<String, ContextTranslation>>>,
 }
 impl Runtime {
@@ -80,6 +81,7 @@ impl Runtime {
             store,
             dictionary: Arc::new(dictionary),
             mini: Mini::new(model_root),
+            decision: Decision::new(llm_root.join("laya")),
             llm: Llm::new(llm_root),
             translation_cache: Arc::new(Mutex::new(HashMap::new())),
         })
@@ -152,8 +154,9 @@ impl Runtime {
     /// Reads a requested frame before suspension and performs local Windows OCR.
     /// Any capture/OCR error restores both the game and application window.
     pub fn capture(&self, app: &AppHandle) -> Result<Frame, String> {
-        let _guard = self.operation.lock().unwrap();
-        self.busy.store(true, Ordering::SeqCst);
+        if self.busy.swap(true, Ordering::SeqCst) {
+            return Err("Захват уже выполняется".into());
+        }
         self.cancel_capture.store(false, Ordering::SeqCst);
         let _ = app.emit("capture-progress", "Получаю кадр игры…");
         let initial = {
@@ -164,6 +167,7 @@ impl Runtime {
         if let Some(game) = initial {
             let _ = self.show_loading(app, &game, false);
         }
+        let _guard = self.operation.lock().unwrap();
         let result = self.capture_inner(app);
         if result.is_err() {
             let _ = self.resume_inner();
@@ -365,6 +369,7 @@ impl Runtime {
         let _ = self.resume_inner();
         self.mini.stop();
         self.llm.stop();
+        self.decision.stop();
         let inner = self.inner.lock().unwrap();
         if let Some(game) = inner.game.as_ref().filter(|_| inner.capture_mode == "hook") {
             let _ = native::call(&self.executable, &["detach".into(), game.pid.to_string()]);
@@ -486,7 +491,7 @@ impl Runtime {
         }
         Ok(())
     }
-    /// Starts the selected model; the quick translator may coexist with the tutor.
+    /// Starts the selected tutor while retaining the CPU translator for instant previews.
     pub fn start_model(&self, settings: &TranslatorSettings) -> Result<(String, String), String> {
         if settings.mini_model == "opus" {
             self.llm.stop();
@@ -536,16 +541,8 @@ impl Runtime {
                 .is_ok_and(|r| r.status().is_success())
             {
                 let mut matched = false;
-                {
-                    if let Some(current) = self.mini.server.lock().unwrap().as_mut() {
-                        if current.endpoint == endpoint && current.token == token {
-                            current.ready = true;
-                            matched = true;
-                        }
-                    }
-                }
-                {
-                    if let Some(current) = self.llm.server.lock().unwrap().as_mut() {
+                for manager in [&self.mini.server, &self.llm.server] {
+                    if let Some(current) = manager.lock().unwrap().as_mut() {
                         if current.endpoint == endpoint && current.token == token {
                             current.ready = true;
                             matched = true;

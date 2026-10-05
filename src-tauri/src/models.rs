@@ -11,6 +11,8 @@ pub struct Settings {
     pub overlay: bool,
     pub capture_backend: String,
     pub translator: TranslatorSettings,
+    pub decision: crate::decision::DecisionSettings,
+    pub subtitles: crate::subtitles::SubtitleSettings,
 }
 impl Default for Settings {
     /// Returns a conflict-resistant default binding and local OCR preferences.
@@ -23,6 +25,8 @@ impl Default for Settings {
             overlay: true,
             capture_backend: "auto".into(),
             translator: TranslatorSettings::default(),
+            decision: crate::decision::DecisionSettings::default(),
+            subtitles: crate::subtitles::SubtitleSettings::default(),
         }
     }
 }
@@ -148,6 +152,7 @@ impl Default for TranslatorSettings {
     }
 }
 #[derive(Clone, Serialize, Deserialize, Default)]
+#[serde(default)]
 pub struct ContextTranslation {
     pub selection: String,
     pub translation: String,
@@ -170,6 +175,8 @@ pub struct ContextTranslation {
     pub grammar_source: String,
     #[serde(default)]
     pub query_count: u64,
+    #[serde(default)]
+    pub decisions: Option<crate::decision::Evidence>,
 }
 #[derive(Clone, Serialize, Deserialize)]
 pub struct GrammarToken {

@@ -37,15 +37,24 @@ class Translator:
                 if first.endswith(':') or (labels and all(t['pos']=='PROPN' for t in labels)):
                     speaker=first.rstrip(':')+': '
                     sentence=rest.strip()
-        lines=[line.strip() for line in sentence.splitlines() if line.strip()]
+        # Keep real dialogue boundaries while joining visual wraps within one sentence.
+        lines=[]
+        for raw in sentence.splitlines():
+            line=' '.join(raw.split())
+            if not line:continue
+            speaker_label=bool(re.match(r"^[A-Za-z][A-Za-z .'-]{0,40}:\s",line))
+            terminal=bool(lines and re.search(r'[.!?][\"\'”)]*$',lines[-1]))
+            if lines and not speaker_label and not terminal:lines[-1]+=' '+line
+            else:lines.append(line)
+        selection=' '.join(selection.split())
         if len(lines)>1:
-            # OPUS may stop at the first newline. Translate every visible dialogue line separately.
             translated=[self.translate(line,line) for line in lines]
             whole='\n'.join(item['context_translation'] for item in translated)
-            index=next((i for i,line in enumerate(lines) if selection.strip().lower() in line.lower()),None)
+            index=next((i for i,line in enumerate(lines) if selection.lower() in line.lower()),None)
             selected=self.translate(selection,lines[index]) if index is not None else self.translate(selection,selection)
-            if ' '.join(selection.split()).lower()==' '.join(sentence.split()).lower():selected['translation']=whole
+            if selection.lower()==' '.join(sentence.split()).lower():selected['translation']=whole
             return {**selected,'context_translation':speaker+whole}
+        sentence=lines[0] if lines else selection
         # Normalize a few conversational affirmations which the tiny MT model transliterates.
         sentence=re.sub(r'^(Yup|Yep|Yeah)\b','Yes',sentence,flags=re.IGNORECASE)
         if selection.strip().rstrip('!.?').lower() in ('yup','yep','yeah'):

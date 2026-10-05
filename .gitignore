@@ -11,3 +11,5 @@ src-tauri/resources/runtime/
 /.cache/
 scripts/qa-desktop-safe.py
 src-tauri/gen/
+
+__pycache__/

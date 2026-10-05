@@ -1,0 +1,44 @@
+[
+  {
+    "file": "config.json",
+    "url": "https://huggingface.co/onnx-community/laya-multilingual-ONNX/resolve/46b77bbf5642fec5f14e540570228a8cbe8ab81f/config.json",
+    "hash": "cc32109b1fded91ec6734127ffb1827f80cdcf8ffdd4eeda75a1b0f4d3687dcc",
+    "destination": "model"
+  },
+  {
+    "file": "tokenizer.json",
+    "url": "https://huggingface.co/onnx-community/laya-multilingual-ONNX/resolve/46b77bbf5642fec5f14e540570228a8cbe8ab81f/tokenizer.json",
+    "hash": "609d8f4c067cd3950f88594c5a802616cea245823836ef5848ee4fc40aab5b6f",
+    "destination": "model"
+  },
+  {
+    "file": "onnx/model_fp16.onnx",
+    "url": "https://huggingface.co/onnx-community/laya-multilingual-ONNX/resolve/46b77bbf5642fec5f14e540570228a8cbe8ab81f/onnx/model_fp16.onnx",
+    "hash": "81f641e21289ddb2cd8ac774c1cddebfdb0fa7e4b183e49ad476d2faee46d98a",
+    "destination": "model"
+  },
+  {
+    "file": "onnx/model_fp16.onnx_data",
+    "url": "https://huggingface.co/onnx-community/laya-multilingual-ONNX/resolve/46b77bbf5642fec5f14e540570228a8cbe8ab81f/onnx/model_fp16.onnx_data",
+    "hash": "3c9eb52f5f795f76d7a681197228131fac7e92c3e5a4c90b68ec4065699ee4cf",
+    "destination": "model"
+  },
+  {
+    "file": "onnxruntime-1.24.4-cp312-cp312-win_amd64.whl",
+    "url": "https://files.pythonhosted.org/packages/8b/f4/6b89e297b93704345f0f3f8c62229bee323ef25682a3f9b4f89a39324950/onnxruntime-1.24.4-cp312-cp312-win_amd64.whl",
+    "hash": "535b29475ca42b593c45fbb2152fbf1cdf3f287315bf650e6a724a0a1d065cdb",
+    "destination": "engine"
+  },
+  {
+    "file": "tokenizers-0.22.2-cp39-abi3-win_amd64.whl",
+    "url": "https://files.pythonhosted.org/packages/65/71/0670843133a43d43070abeb1949abfdef12a86d490bea9cd9e18e37c5ff7/tokenizers-0.22.2-cp39-abi3-win_amd64.whl",
+    "hash": "c9ea31edff2968b44a88f97d784c2f16dc0729b8b143ed004699ebca91f05c48",
+    "destination": "engine"
+  },
+  {
+    "file": "flatbuffers-25.12.19-py2.py3-none-any.whl",
+    "url": "https://files.pythonhosted.org/packages/e8/2d/d2a548598be01649e2d46231d151a6c56d10b964d94043a335ae56ea2d92/flatbuffers-25.12.19-py2.py3-none-any.whl",
+    "hash": "7634f50c427838bb021c2d66a3d1168e9d199b0607e6329399f04846d42e20b4",
+    "destination": "engine"
+  }
+]

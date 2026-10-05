@@ -5,7 +5,7 @@ import {BrainCircuit,Download,Play,Square,Check,KeyRound,RefreshCw} from 'lucide
 import type {Settings,Translator} from './types';
 
 type Mini={installed:boolean;running:boolean;ready:boolean;parser_only:boolean;model:string;size_mb:number;threads:number;device:string;grammar:boolean;installing:boolean};
-type Preset={id:string;name:string;size:number;grammar:boolean;gpu?:boolean;source:string};
+ type Preset={id:string;name:string;size:number;grammar:boolean;gpu?:boolean;source:string;context_size?:number};
 const opus:Preset={id:'opus',name:'OPUS-MT · EN → RU · int8',size:78276475,grammar:false,source:'https://huggingface.co/Helsinki-NLP/opus-mt-en-ru'};
 export function TranslatorPanel({settings,onChange,onMessage}:{settings:Settings;onChange:(settings:Partial<Settings>)=>Promise<void>;onMessage:(text:string,error?:boolean)=>void}){
  const [draft,setDraft]=useState<Translator>(settings.translator);
@@ -57,7 +57,7 @@ export function TranslatorPanel({settings,onChange,onMessage}:{settings:Settings
    <div className="model-presets">{presets.map(model=><button disabled={working} key={model.id} className={'model-preset '+(draft.mini_model===model.id?'selected':'')} onClick={()=>setDraft({...draft,mini_model:model.id,provider:'mini',device:model.gpu?draft.device:'cpu'})}>
     <strong>{model.name}</strong><span>{Math.round(model.size/1048576)} MiB весов · {model.grammar?'перевод, контекст, грамматика':'быстрый перевод · слабые ПК'}</span>
    </button>)}</div>
-   <p>{preset.grammar?'Qwen анализирует значение, конструкции и примеры. 4B требует больше памяти. Свежие 0.8B и 2B — экспериментальные: качество грамматики ниже. Разбор можно отредактировать перед сохранением.':'Компактная модель, обученная переводу. Переводит реплику целиком и приблизительно связывает выбранные слова с русским текстом. Синтаксис отдельно разбирает встроенная spaCy: роли слов, V1/V2/V3 и формы неправильных глаголов.'}</p>
+   <p>{preset.id==='bonsai-1.7b'?'Bonsai: компактный контекст 1024 токена, короткие пояснения и перевод. При неполном ответе используется OPUS. Квантование Q1 может снижать точность.':preset.grammar?'Qwen анализирует значение, конструкции и примеры. 4B требует больше памяти. Свежие 0.8B и 2B — экспериментальные: качество грамматики ниже. Разбор можно отредактировать перед сохранением.':'Компактная модель, обученная переводу. Переводит реплику целиком и приблизительно связывает выбранные слова с русским текстом. Синтаксис отдельно разбирает встроенная spaCy: роли слов, V1/V2/V3 и формы неправильных глаголов.'}</p>
    <p className="settings-note">Размер весов не равен расходу RAM / VRAM. Runtime устанавливается автоматически. <a href={preset.source} target="_blank" rel="noreferrer">Описание модели</a></p>
    {progress&&mini.installing&&<div className="model-progress"><RefreshCw size={14} className="spin"/>{progress}</div>}
    <div className="mini-actions">

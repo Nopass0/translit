@@ -25,7 +25,7 @@ assert.equal(moveSelection(blocks,[3,5],'left').end,2);
 assert.equal(selectionUnits(frame,'words',true).length,8);
 assert.equal(moveSelection(selectionUnits(frame,'words',true),[3,3],'right').text,'me');
 for(const bounds of [{left:0,top:0,width:3440,height:1440},{left:500,top:50,width:320,height:240},{left:0,top:0,width:12,height:12}]){
- const w=Math.max(1,Math.min(420,bounds.width-16)),h=Math.max(1,Math.min(850,bounds.height-16));
+ const w=Math.max(1,Math.min(640,bounds.width-16)),h=Math.max(1,Math.min(850,bounds.height-16));
  for(const p of [{x:-1000,y:-1000},{x:9999,y:9999}]){const result=clampPopup(p,w,h,bounds);assert(result.x>=bounds.left);assert(result.y>=bounds.top);assert(result.x+w<=bounds.left+bounds.width);assert(result.y+h<=bounds.top+bounds.height);}
 }
 console.log('PASS: phrase/word navigation, wraparound, small/off-screen monitor popup bounds');

@@ -1,1 +1,1 @@
-{"identifier":"default","description":"Dictionary and overlay window controls","windows":["main","overlay"],"permissions":["core:default","core:window:allow-start-dragging","core:window:allow-minimize","core:window:allow-toggle-maximize","core:window:allow-close"]}
+{"identifier":"default","description":"Dictionary, overlay, and live subtitle window controls","windows":["main","overlay","subtitles"],"permissions":["core:default","core:window:allow-start-dragging","core:window:allow-minimize","core:window:allow-toggle-maximize","core:window:allow-close"]}

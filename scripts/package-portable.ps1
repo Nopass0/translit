@@ -1,9 +1,10 @@
-param([switch]$SkipArchive)
+param([switch]$SkipArchive,[string]$StageDirectory)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$releaseDirectory = "$projectRoot/src-tauri/target/release"
+$targetDirectory = if ($env:CARGO_TARGET_DIR) { $env:CARGO_TARGET_DIR } else { "$projectRoot/src-tauri/target" }
+$releaseDirectory = Join-Path $targetDirectory "release"
 if (!(Test-Path -LiteralPath "$releaseDirectory/translit.exe")) { throw 'Run npm run release first' }
-$destination = "$projectRoot/artifacts/Translit-0.2.0-portable"
+$destination = if ($StageDirectory) { [IO.Path]::GetFullPath($StageDirectory) } else { "$projectRoot/artifacts/Translit-0.3.0-portable" }
 New-Item -ItemType Directory -Force -Path $destination, "$destination/bin", "$destination/data" | Out-Null
 Copy-Item -LiteralPath "$releaseDirectory/translit.exe" -Destination "$destination/Translit.exe"
 Copy-Item -LiteralPath "$projectRoot/src-tauri/resources/bin/translit_native.exe" -Destination "$destination/bin"
@@ -23,5 +24,5 @@ foreach ($resource in @('models','runtime','ocr')) {
     Get-ChildItem -LiteralPath "$projectRoot/src-tauri/resources/$resource" | Copy-Item -Destination $target -Recurse -Force
 }
 Get-ChildItem -LiteralPath "$destination/runtime/windows-x64" -Filter '*.dll' | Copy-Item -Destination $destination
-if (!$SkipArchive) { Compress-Archive -Path "$destination/*" -DestinationPath "$projectRoot/artifacts/Translit-0.2.0-portable.zip" -Force }
+if (!$SkipArchive) { Compress-Archive -Path "$destination/*" -DestinationPath "$projectRoot/artifacts/Translit-0.3.0-portable.zip" -Force }
 Get-Item -LiteralPath "$destination/Translit.exe" | Select-Object FullName,Length

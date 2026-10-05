@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 mod bindings;
 mod context;
+mod decision;
 mod dictionary;
 mod downloads;
 mod grammar;
@@ -13,6 +14,7 @@ mod models;
 mod native;
 mod ocr;
 mod runtime;
+mod subtitles;
 use models::*;
 use runtime::Runtime;
 use std::{
@@ -288,10 +290,22 @@ fn save_settings(
         || !["offline", "mini", "ollama", "openai", "compatible"]
             .contains(&settings.translator.provider.as_str())
         || settings.translator.history_lines > 12
-        || !["opus", "qwen35-small", "qwen35-2b", "qwen3-4b"]
-            .contains(&settings.translator.mini_model.as_str())
+        || ![
+            "opus",
+            "qwen35-small",
+            "qwen35-2b",
+            "qwen3-4b",
+            "bonsai-1.7b",
+        ]
+        .contains(&settings.translator.mini_model.as_str())
         || !["cpu", "vulkan"].contains(&settings.translator.device.as_str())
         || settings.translator.threads > 64
+        || settings.decision.threads > 8
+        || !(256..=1024).contains(&settings.decision.tokens)
+        || !(250..=2000).contains(&settings.subtitles.interval_ms)
+        || !(18..=56).contains(&settings.subtitles.font_size)
+        || !(0.35..=0.85).contains(&settings.subtitles.region_top)
+        || !(0.1..=0.45).contains(&settings.subtitles.region_height)
     {
         return Err("Некорректные настройки переводчика".into());
     }
@@ -313,19 +327,32 @@ fn save_settings(
     let mut inner = state.inner.lock().unwrap();
     let old = inner.data.settings.clone();
     let changed_model = old.translator != settings.translator;
+    let changed_decision = old.decision != settings.decision;
     inner.data.settings = settings;
     if let Err(error) = dictionary::persist(&state.store, &inner.data) {
         inner.data.settings = old;
         return Err(error);
     }
     drop(inner);
+    let _ = app.emit("status-changed", ());
     if changed_model {
         state.translation_cache.lock().unwrap().clear();
         state.mini.stop();
         state.llm.stop();
         let rt = state.inner().clone();
+        let app = app.clone();
         tauri::async_runtime::spawn(async move {
             if let Err(error) = rt.prepare_model(&app).await {
+                let _ = app.emit("app-error", error);
+            }
+        });
+    }
+    if changed_decision {
+        state.decision.stop();
+        let rt = state.inner().clone();
+        let app = app.clone();
+        tauri::async_runtime::spawn(async move {
+            if let Err(error) = rt.decision.prepare(&rt, &app, false).await {
                 let _ = app.emit("app-error", error);
             }
         });
@@ -437,6 +464,27 @@ fn stop_mini(state: State<Runtime>) {
     state.mini.stop();
     state.llm.stop();
 }
+/// Reports whether the managed Laya model is installed, loading, or ready.
+#[tauri::command]
+fn decision_status(state: State<Runtime>) -> decision::Status {
+    state.decision.status()
+}
+/// Installs the pinned Laya multilingual model and its private ONNX runtime.
+#[tauri::command]
+async fn install_decision(app: tauri::AppHandle, state: State<'_, Runtime>) -> Result<(), String> {
+    state.decision.install(&app).await
+}
+/// Starts the Laya model without changing the active translation model.
+#[tauri::command]
+async fn start_decision(app: tauri::AppHandle, state: State<'_, Runtime>) -> Result<(), String> {
+    let runtime = state.inner().clone();
+    state.decision.prepare(&runtime, &app, true).await
+}
+/// Stops Laya and releases its inference process.
+#[tauri::command]
+fn stop_decision(state: State<Runtime>) {
+    state.decision.stop();
+}
 /// Checks whether the user's API key is present in Windows Credential Manager.
 #[tauri::command]
 fn key_status(state: State<Runtime>) -> Result<bool, String> {
@@ -536,10 +584,27 @@ fn main() {
             )
             .map_err(std::io::Error::other)?;
             app.manage(rt.clone());
+            subtitles::start(handle.clone(), rt.clone());
             let model_rt = rt.clone();
             let model_app = handle.clone();
             tauri::async_runtime::spawn(async move {
-                if let Err(error) = model_rt.prepare_model(&model_app).await {
+                if !model_rt.mini.status().installed {
+                    if let Err(error) = model_rt.mini.install(&model_app).await {
+                        let _ = model_app.emit("app-error", error);
+                    }
+                }
+                let translator_rt = model_rt.clone();
+                let translator_app = model_app.clone();
+                tauri::async_runtime::spawn(async move {
+                    if let Err(error) = translator_rt.prepare_model(&translator_app).await {
+                        let _ = translator_app.emit("app-error", error);
+                    }
+                });
+                if let Err(error) = model_rt
+                    .decision
+                    .prepare(&model_rt, &model_app, false)
+                    .await
+                {
                     let _ = model_app.emit("app-error", error);
                 }
             });
@@ -597,6 +662,13 @@ fn main() {
             Ok(())
         })
         .on_window_event(|window, event| {
+            if window.label() == "subtitles" {
+                if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+                    api.prevent_close();
+                    let _ = window.hide();
+                }
+                return;
+            }
             if window.label() == "overlay" {
                 if let tauri::WindowEvent::CloseRequested { api, .. } = event {
                     api.prevent_close();
@@ -647,6 +719,10 @@ fn main() {
             install_mini,
             start_mini,
             stop_mini,
+            decision_status,
+            install_decision,
+            start_decision,
+            stop_decision,
             key_status,
             save_api_key
         ])
